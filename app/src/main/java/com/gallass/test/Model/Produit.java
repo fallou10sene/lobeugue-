@@ -14,6 +14,7 @@ public class Produit extends RealmObject {
     private String nomProduit;
     private int quantite;
     private int prix;
+    private String categorie;
 
 
     /*public int getProductImage() {
@@ -54,6 +55,14 @@ public class Produit extends RealmObject {
 
     public void setPrix(int prix) {
         this.prix = prix;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
     }
 
     @Override

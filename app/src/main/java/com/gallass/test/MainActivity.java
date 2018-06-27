@@ -12,9 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.support.v7.widget.Toolbar;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import com.gallass.test.Model.Produit;
@@ -38,12 +42,21 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private DrawerLayout.DrawerListener drawerToggle;
 
+    Spinner spinnerDropDown;
+    String[] categorie = {
+            "Plat",
+            "Fruit",
+            "Boisson"
+    };
+    int catchoisi;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //definir notre toolbar en tant qu'actionBar
@@ -58,12 +71,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // Get reference of SpinnerView from layout/main_activity.xml
+        spinnerDropDown =(Spinner)findViewById(R.id.spinner1);
+
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.
+                R.layout.simple_spinner_dropdown_item ,categorie);
+
+        spinnerDropDown.setAdapter(adapter);
+
+        spinnerDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // Get select item
+                int catchoisi=spinnerDropDown.getSelectedItemPosition();
+                Toast.makeText(getBaseContext(), "Tu as choisir cette catégorie : " + categorie[catchoisi],
+                        Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
+        spinnerDropDown =(Spinner)findViewById(R.id.spinner1);
+
+
         editNomProduit = (EditText) findViewById(R.id.nomproduit);
         editQuantite = (EditText) findViewById(R.id.quantite);
         editPrix = (EditText) findViewById(R.id.prix);
-        realm = Realm.getDefaultInstance();
+
 
         enregistrer = (Button) findViewById(R.id.enregistrer);
+        realm = Realm.getDefaultInstance();
        enregistrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 save_into_database(
                 editNomProduit.getText().toString().trim(),
                 Integer.parseInt(editQuantite.getText().toString().trim()),
-                Integer.parseInt(editPrix.getText().toString().trim()));
+                Integer.parseInt(editPrix.getText().toString().trim()),
+                        spinnerDropDown.getOnItemSelectedListener().toString().trim());
+
+
 
                 Intent intent = new Intent(MainActivity.this, RedirectActivity.class);
                 startActivity(intent);
@@ -95,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return id;
     }
-    private void save_into_database(final String nomproduit, final int quantite, final int prix) {
+    private void save_into_database(final String nomproduit, final int quantite, final int prix, final String categorie) {
         //realm = Realm.getDefaultInstance();
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -104,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 produit.setNomProduit(nomproduit);
                 produit.setQuantite(quantite);
                 produit.setPrix(prix);
+                produit.setCategorie(categorie);
 
             }
         }, new Realm.Transaction.OnSuccess() {

@@ -52,8 +52,13 @@
         android:hint="Prix"
         android:textColorHint="#fff"
         android:inputType="number"/>
-
-
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:popupBackground="@drawable/custom_btn1"
+        android:background="@drawable/custom_btn1"
+        />
     <Button
         android:id="@+id/enregistrer"
         android:layout_width="260dp"
@@ -63,6 +68,8 @@
         android:text="Enregistre"
         android:textColor="#fff"
         tools:ignore="OnClick" />
+
+
 
 
 </LinearLayout>
