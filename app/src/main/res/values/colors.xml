@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary1">#3F51B5</color>
+    <color name="colorPrimaryDark1">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="year">#999999</color>
+    <color name="title">#222222</color>
+    <color name="rouge">#f71313</color>
+    <color name="vert">#34d623</color>
+    <color name="jaune">#f9f234</color>
+    <color name="bleu">#3828d2</color>
+    <color name="marron">#b75615</color>
+    <color name="baise">#e0b96d</color>
+
+
+        <color name="blue">#303F9F</color>
+        <color name="green">#4CAF50</color>
+        <color name="purple">#673AB7</color>
+        <color name="cyan">#00BCD4</color>
+        <color name="orange">#e95609</color>
+
+        <color name="accent_color">@color/cyan</color>
+        <color name="colorPrimary">@color/cyan</color>
+        <color name="colorPrimaryDark">@color/cyan</color>
+        <color name="statusBarColor">@color/cyan</color>
+
+
+</resources>

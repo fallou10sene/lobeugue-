@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Merci de saisir vos Produits"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/nomproduit"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_btn1"
+        android:hint="Nom du Produit"
+        android:textColorHint="#fff" />
+
+    <EditText
+        android:id="@+id/quantite"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_btn1"
+        android:hint="Quantité"
+        android:textColorHint="#fff"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/prix"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_btn1"
+        android:hint="Prix"
+        android:textColorHint="#fff"
+        android:inputType="number"/>
+
+
+    <Button
+        android:id="@+id/enregistrer"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_btn3"
+        android:onClick="Enregistre"
+        android:text="Enregistre"
+        android:textColor="#fff"
+        tools:ignore="OnClick" />
+
+
+</LinearLayout>
