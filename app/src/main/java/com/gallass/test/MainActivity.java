@@ -105,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
 
         enregistrer = (Button) findViewById(R.id.enregistrer);
         realm = Realm.getDefaultInstance();
-       enregistrer.setOnClickListener(new View.OnClickListener() {
+        enregistrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 save_into_database(
-                editNomProduit.getText().toString().trim(),
-                Integer.parseInt(editQuantite.getText().toString().trim()),
-                Integer.parseInt(editPrix.getText().toString().trim()),
+                        editNomProduit.getText().toString().trim(),
+                        Integer.parseInt(editQuantite.getText().toString().trim()),
+                        Integer.parseInt(editPrix.getText().toString().trim()),
                         spinnerDropDown.getOnItemSelectedListener().toString().trim());
 
 
